@@ -185,8 +185,6 @@ target
 
 # End of https://www.gitignore.io/api/java,linux,macos,windows,intellij+all
 .idea/vcs.xml
-pom.xml
 src/main/resources/
 src/test/
-/pom.xml
 /src/main/java/Parola.java
