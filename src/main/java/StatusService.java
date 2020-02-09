@@ -26,7 +26,53 @@ public class StatusService {
             return null;
         }
     }
+    public void updateStatus(int id, String updatedStatus) {
+        Transaction transaction = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            Status statusById = findStatusById(id);
+            statusById.statusName = updatedStatus;
+            session.update(statusById);
+            session.getTransaction().commit();
+        } catch (Exception ex) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            ex.printStackTrace();
+        }
+    }
+    public void createStatus (String addNewStatus){
+        Transaction transaction = null;
+        try{
+            Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+            transaction = session.beginTransaction();
+            Status newStatus = new Status();
+            newStatus.statusName = addNewStatus;
+            session.save(newStatus);
+            transaction.commit();
+            session.close();
+        } catch (Exception ex) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            ex.printStackTrace();
+        }
+    }
 
-
-
+    public void deleteStatusById(int id) {
+        Transaction transaction = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            Status statusById = findStatusById(id);
+            session.delete(statusById);
+            session.getTransaction().commit();
+        } catch (Exception ex) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            ex.printStackTrace();
+        }
+    }
 }
