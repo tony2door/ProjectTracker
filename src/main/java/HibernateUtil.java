@@ -17,13 +17,18 @@ public class HibernateUtil {
                 // Hibernate settings equivalent to hibernate.cfg.xml's properties
                 Properties settings = new Properties();
                 settings.put(Environment.DRIVER, "com.mysql.jdbc.Driver");
-                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/scoala?serverTimezone=UTC");
+                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/projecttracker?serverTimezone=UTC");
                 settings.put(Environment.USER, "root");
                 settings.put(Environment.PASS, Parola.parola());
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
                 settings.put(Environment.SHOW_SQL, "true");
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
                 configuration.setProperties(settings);
+                configuration.addAnnotatedClass(Comment.class);
+                configuration.addAnnotatedClass(Item.class);
+                configuration.addAnnotatedClass(Project.class);
+                configuration.addAnnotatedClass(Status.class);
+                configuration.addAnnotatedClass(Type.class);
                 //configuration add annotated
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();
