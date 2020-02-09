@@ -1,8 +1,7 @@
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-@Entity
+import javax.persistence.*;
+import java.util.List;
+
+@Entity // MANY
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,5 +10,22 @@ public class Project {
     String name;
     String shortName;
     String description;
-    Integer statusID; //foreign key
+  //  Integer statusID; //foreign key
+
+    // Many Projects to one status
+    @ManyToOne
+    @JoinColumn(name = "statusID")
+    Status statusIdForeignKey;
+
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "projectID=" + projectID +
+                ", name='" + name + '\'' +
+                ", shortName='" + shortName + '\'' +
+                ", description='" + description + '\'' +
+                ", statusID=" + statusIdForeignKey.statusID +
+                '}';
+    }
 }
