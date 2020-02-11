@@ -6,7 +6,7 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    Integer projectID; //primary key
+   private Integer projectID; //primary key
     String name;
     String shortName;
     String description;
@@ -17,6 +17,13 @@ public class Project {
     @JoinColumn(name = "statusID")
     Status statusIdForeignKey;
 
+
+
+//    public Status setStatus (Statuses idStatus){
+//        Status status = new Status();
+//       status.statusID = idStatus.id;
+//        return status;
+//    }
 
     @Override
     public String toString() {
