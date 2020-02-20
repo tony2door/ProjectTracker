@@ -1,7 +1,6 @@
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
+
 @Entity
 public class Item {
     @Id
@@ -11,7 +10,11 @@ public class Item {
     String title;
     String description;
     Integer statusID; //foreign key
-    Integer typeID; // foreign key
+  //  Integer typeID; // foreign key
+
+    @ManyToOne
+    @JoinColumn(name = "typeID")
+    Type typeIdForeignKey;
 
     @Override
     public String toString() {
@@ -20,7 +23,7 @@ public class Item {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", statusID=" + statusID +
-                ", typeID=" + typeID +
+                ", typeID=" + typeIdForeignKey.typeID +
                 '}';
     }
 }

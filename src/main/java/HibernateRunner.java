@@ -44,7 +44,11 @@ public class HibernateRunner {
 //        nouProj.shortName = "eNuM";
 //        projectService.createProject(nouProj);
 
+        TypeService typeService = TypeService.getInstance();
+        Type typeById = typeService.findTypeById(2);
 
+        System.out.println("-----------------------------------------");
+        System.out.println(typeById.itemList);
 
     }
 }
