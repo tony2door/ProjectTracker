@@ -36,13 +36,13 @@ public class HibernateRunner {
 
         //projectService.deleteProjectById(3);
 
-        Project nouProj = new Project();
-        Status status = new Status();
-        nouProj.statusIdForeignKey = status.statusOption(Status.Statuses.NEW);
-        nouProj.name = "Proiectul Cu enum";
-        nouProj.description = "am adaugat Enumuri sa vad daca pot forta userul sa aleaga una din 3 variante";
-        nouProj.shortName = "eNuM";
-        projectService.createProject(nouProj);
+//        Project nouProj = new Project();
+//        Status status = new Status();
+//        nouProj.statusIdForeignKey = status.statusOption(Status.Statuses.NEW);
+//        nouProj.name = "Proiectul Cu enum";
+//        nouProj.description = "am adaugat Enumuri sa vad daca pot forta userul sa aleaga una din 3 variante";
+//        nouProj.shortName = "eNuM";
+//        projectService.createProject(nouProj);
 
 
 
