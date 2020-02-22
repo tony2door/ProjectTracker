@@ -12,6 +12,8 @@ public class Status {
 
 
     //One status to many Projects
+
+
     @OneToMany(mappedBy = "statusIdForeignKey")
     List<Project> projectList;
 

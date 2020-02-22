@@ -6,7 +6,7 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-   private Integer projectID; //primary key
+    Integer projectID; //primary key
     String name;
     String shortName;
     String description;

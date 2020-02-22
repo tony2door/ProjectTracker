@@ -1,6 +1,9 @@
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProjectService {
     private static ProjectService instance;
 
@@ -25,6 +28,22 @@ public class ProjectService {
             return null;
         }
     }
+
+    public void findAllProjects() {
+        try { //try e un fel de if
+            String sql = "from Project";
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            List<Project> projects = session.createQuery(sql).list();
+
+            for (int i = 0; i < projects.size(); i++) {
+                System.out.println("ID proiect:" + projects.get(i).projectID + " - " + projects.get(i).name);
+            }
+
+        } catch (Exception ex) { //catch e un fel de else
+            ex.printStackTrace();
+        }
+    }
+
     public void updateProject(Project updatedProject) {
         Transaction transaction = null;
         try {
